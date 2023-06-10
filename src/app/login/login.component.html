@@ -1,0 +1,23 @@
+<section>
+  <h2>Login</h2>
+  <form onSubmit={handleSubmit}>
+    <input
+      onInput={handleChange}
+      value={formData.name}
+      type="text"
+      placeholder="Login"
+      name="name"
+      required
+    />
+    <input
+      onInput={handleChange}
+      value={formData.password}
+      type="password"
+      placeholder="Password"
+      name="password"
+      required
+    />
+    <button type="submit">Login</button>
+  </form>
+  <a routerLink="/register">Registration</a>
+</section>

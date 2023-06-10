@@ -1,0 +1,25 @@
+<section>
+  <h2>Registration</h2>
+  <form onSubmit={handleSubmit}>
+    <input
+      onInput={handleChange}
+      value={formData.name}
+      type="text"
+      placeholder="Login"
+      name="name"
+      required
+    />
+    <input
+      onInput={handleChange}
+      value={formData.password}
+      type="password"
+      placeholder="Password"
+      name="password"
+      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$"
+      title="Password must contain at least 8 characters, including at least one number, one lowercase letter, and one uppercase letter."
+      required
+    />
+    <button type="submit">Create account</button>
+  </form>
+  <a routerLink="/">Login</a>
+</section>
