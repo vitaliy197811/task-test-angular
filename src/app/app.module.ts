@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -7,16 +8,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterationComponent } from './registeration/registeration.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterationComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  declarations: [AppComponent, LoginComponent, RegisterationComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
