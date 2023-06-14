@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from '../api-user.service';
 
 @Component({
   selector: 'app-registeration',
@@ -7,12 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./registeration.component.css'],
 })
 export class RegisterationComponent {
+  constructor(private router: Router, private apiService: ApiService) { }
+  
   formData = {
     name: '',
     password: '',
   };
-
-  constructor(private router: Router) {}
 
   handleChange = (e: any) => {
     const { name, value } = e.target;
@@ -24,12 +25,16 @@ export class RegisterationComponent {
 
   handleSubmit = async (e: any) => {
     e.preventDefault();
-  //   await this.registerUser(this.formData);
-
-  //   const data = await this.loginUser(this.formData);
-  //   localStorage.setItem('token', data.token);
-  //   localStorage.setItem('user', JSON.stringify(this.formData));
-  //   this.router.navigate(['/list']);
-  //   window.location.reload();
+    try {
+      await this.apiService.register(this.formData).toPromise();
+      const { token } = await this.apiService.login(this.formData).toPromise();
+      console.log(token);
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(this.formData));
+      this.router.navigate(['/list']);
+      // window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
   };
 }

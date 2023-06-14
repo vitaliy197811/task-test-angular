@@ -1,0 +1,24 @@
+<section>
+  <h2>List</h2>
+  <button (click)="navigateToAdd()" class="button">
+    New
+    <div class="plus"></div>
+  </button>
+  <input class="input" (input)="handleChange($event)" type="text" placeholder="Search" />
+  <div *ngIf="loading" class="loader">
+    <!-- <app-loader></app-loader> -->
+  </div>
+  <ng-container *ngIf="tasks && !loading; else noTasks">
+    <ul>
+      <li *ngFor="let task of tasks" [class.done]="classDone(task.done)">
+        <a class="link" [routerLink]="['/list', task.id]" [state]="{ id: task.id, date: task.date, hours: task.hours, message: task.message, done: task.done }">
+          <div>ITEM</div>
+          <!-- <app-task-item [id]="task.id" [date]="task.date" [hours]="task.hours" [message]="task.message"></app-task-item> -->
+        </a>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-template #noTasks>
+    <div class="text">You don't have your tasks</div>
+  </ng-template>
+</section>

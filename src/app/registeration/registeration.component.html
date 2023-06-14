@@ -1,17 +1,17 @@
 <section>
   <h2>Registration</h2>
-  <form onSubmit={handleSubmit}>
+  <form (submit)="handleSubmit($event)">
     <input
-      onInput={handleChange}
-      value={formData.name}
+      (input)="handleChange($event)"
+      [value]="formData.name"
       type="text"
       placeholder="Login"
       name="name"
       required
     />
     <input
-      onInput={handleChange}
-      value={formData.password}
+      (input)="handleChange($event)"
+      [value]="formData.password"
       type="password"
       placeholder="Password"
       name="password"
